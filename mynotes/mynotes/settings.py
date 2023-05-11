@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t6n3x$8ui$h(0b8@gr%gzkx!7yb_aap*!bnkc#nrq*&&2b6(*#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -125,11 +125,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(
-    BASE_DIR, 'staticfiles_build', 'static')
-
-# STATICFILES_DIRS = [BASE_DIR / 'frontend/build/static']
+STATICFILES_DIRS = [BASE_DIR / 'frontend/build/static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -137,3 +133,12 @@ STATIC_ROOT = os.path.join(
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379')]
+        }
+    }
+}
