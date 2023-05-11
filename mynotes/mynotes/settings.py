@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t6n3x$8ui$h(0b8@gr%gzkx!7yb_aap*!bnkc#nrq*&&2b6(*#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'mynotes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#   'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#   }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -125,9 +125,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'frontend/build/static'),
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(
-    BASE_DIR, 'staticfiles_build', 'frontend/build/static')
+    BASE_DIR, 'staticfiles_build', 'static')
 
 # STATICFILES_DIRS = [BASE_DIR / 'frontend/build/static']
 
